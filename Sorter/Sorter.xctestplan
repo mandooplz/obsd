@@ -1,0 +1,47 @@
+{
+  "configurations" : [
+    {
+      "id" : "D343BAA4-7792-4D28-B295-24071D77A413",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:",
+          "identifier" : "SortDescriptor",
+          "name" : "SortDescriptor"
+        },
+        {
+          "containerPath" : "container:",
+          "identifier" : "Sorter",
+          "name" : "Sorter"
+        }
+      ]
+    },
+    "performanceAntipatternCheckerEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "SorterTests",
+        "name" : "SorterTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "SortDescriptorTests",
+        "name" : "SortDescriptorTests"
+      }
+    }
+  ],
+  "version" : 1
+}

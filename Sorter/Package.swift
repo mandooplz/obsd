@@ -5,22 +5,62 @@ import PackageDescription
 
 let package = Package(
     name: "Sorter",
+    platforms: [.iOS(.v18), .macOS(.v15)],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
+        // Sorter
         .library(
             name: "Sorter",
             targets: ["Sorter"]
         ),
+        
+        // SortDescriptor
+        .library(
+            name: "SortDescriptor",
+            targets: ["SortDescriptor"]
+        ),
+        
+        // SortValues
+        .library(
+            name: "SortValues",
+            targets: ["SortValues"]
+        )
+    ],
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-collections.git", branch: "main")
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
+        // Sort
         .target(
-            name: "Sorter"
+            name: "Sorter",
+            dependencies: [
+                "SortDescriptor",
+                "SortValues",
+                .product(name: "Collections", package: "swift-collections")
+            ]
         ),
         .testTarget(
             name: "SorterTests",
-            dependencies: ["Sorter"]
+            dependencies: ["Sorter", "SortValues"]
         ),
-    ]
+        
+        
+        // SortDescriptor
+        .target(
+            name: "SortDescriptor",
+            dependencies: [
+                "SortValues",
+                .product(name: "Collections", package: "swift-collections")
+            ]
+        ),
+        .testTarget(
+            name: "SortDescriptorTests",
+            dependencies: ["SortDescriptor", "SortValues"]
+        ),
+        
+        // SortValues
+        .target(
+            name: "SortValues"
+        )
+        
+        ]
 )
