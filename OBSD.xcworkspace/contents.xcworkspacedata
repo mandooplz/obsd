@@ -2,12 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SorterMac/SorterMac.xcodeproj">
+      location = "group:TicTacToe">
    </FileRef>
    <FileRef
       location = "group:Sorter">
    </FileRef>
    <FileRef
       location = "group:Sorter/Sorter.xctestplan">
+   </FileRef>
+   <FileRef
+      location = "group:TicTacToe/TicTacToe.xctestplan">
    </FileRef>
 </Workspace>
