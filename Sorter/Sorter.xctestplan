@@ -13,11 +13,6 @@
       "targets" : [
         {
           "containerPath" : "container:",
-          "identifier" : "SortDescriptor",
-          "name" : "SortDescriptor"
-        },
-        {
-          "containerPath" : "container:",
           "identifier" : "Sorter",
           "name" : "Sorter"
         }
@@ -32,14 +27,6 @@
         "containerPath" : "container:",
         "identifier" : "SorterTests",
         "name" : "SorterTests"
-      }
-    },
-    {
-      "parallelizable" : true,
-      "target" : {
-        "containerPath" : "container:",
-        "identifier" : "SortDescriptorTests",
-        "name" : "SortDescriptorTests"
       }
     }
   ],
