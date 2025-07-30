@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "58353653-A75F-4F4C-91CC-9A962BC2E5E6",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "performanceAntipatternCheckerEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "TicTacToeTests",
+        "name" : "TicTacToeTests"
+      }
+    }
+  ],
+  "version" : 1
+}
