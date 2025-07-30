@@ -8,7 +8,7 @@ import Foundation
 
 
 // MARK: Object
-@MainActor
+@MainActor @Observable
 public final class TicTacToe {
     // MARK: core
     public init() {
@@ -94,7 +94,7 @@ public final class TicTacToe {
 
 
 // MARK: ObjectManager
-@MainActor
+@MainActor @Observable
 fileprivate final class TicTacToeManager {
     // MARK: state
     static var container: [TicTacToe.ID: TicTacToe] = [:]

@@ -8,7 +8,7 @@ import Foundation
 
 
 // MARK: Object
-@MainActor
+@MainActor @Observable
 public final class GameBoard {
     // MARK: core
     init(tictactoe: TicTacToe.ID) {
@@ -153,7 +153,7 @@ public final class GameBoard {
 
 
 // MARK: ObjectManager
-@MainActor
+@MainActor @Observable
 fileprivate final class GameBoardManager {
     // MARK: state
     static var container: [GameBoard.ID: GameBoard] = [:]

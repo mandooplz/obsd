@@ -8,7 +8,7 @@ import Foundation
 
 
 // MARK: Object
-@MainActor
+@MainActor @Observable
 public final class GameCard {
     // MARK: core
     init(position: Int, board: GameBoard.ID) {
@@ -126,7 +126,7 @@ public final class GameCard {
 
 
 // MARK: ObjectManager
-@MainActor
+@MainActor @Observable
 fileprivate final class GameCardManager {
     // MARK: state
     static var container: [GameCard.ID: GameCard] = [:]
