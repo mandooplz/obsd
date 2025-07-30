@@ -56,7 +56,7 @@ public final class TicTacToe {
         }
         
         // mutate
-        let gameBoardRef = GameBoard()
+        let gameBoardRef = GameBoard(tictactoe: self.id)
         self.boards.insert(gameBoardRef.id)
     }
     

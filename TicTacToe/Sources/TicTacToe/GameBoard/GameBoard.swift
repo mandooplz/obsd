@@ -11,7 +11,9 @@ import Foundation
 @MainActor
 public final class GameBoard {
     // MARK: core
-    init() {
+    init(tictactoe: TicTacToe.ID) {
+        self.tictactoe = tictactoe
+        
         GameBoardManager.register(self)
     }
     func delete() {
@@ -20,6 +22,7 @@ public final class GameBoard {
     
     // MARK: state
     nonisolated let id = ID()
+    nonisolated let tictactoe: TicTacToe.ID
     public nonisolated let createdAt: Date = .now
 
     public internal(set) var currentPlayer: Player = .X
@@ -56,9 +59,9 @@ public final class GameBoard {
         self.issue = .init(error.rawValue)
     }
     
-    package var callback: Callback?
-    package func setCallback(_ callback: @escaping Callback) {
-        self.callback = callback
+    package var hook: Hook?
+    package func setHook(_ callback: @escaping Hook) {
+        self.hook = callback
     }
     
     
@@ -66,7 +69,7 @@ public final class GameBoard {
     // MARK: action
     public func setUp() async {
         // capture
-        await callback?()
+        await hook?()
         guard id.isExist else {
             setIssue(.gameBoardIsDeleted)
             print(#file, #line, #function, "GameBoard가 존재하지 않아 실행 취소됩니다.")
@@ -84,6 +87,24 @@ public final class GameBoard {
                                        board: self.id)
             self.cards[position] = gameCardRef.id
         }
+    }
+    
+    public func removeBoard() async {
+        // capture
+        await hook?()
+        guard id.isExist else {
+            setIssue(.gameBoardIsDeleted)
+            print("GameBoard가 존재하지 않아 실행 취소됩니다.")
+            return
+        }
+        let tictactoeRef = self.tictactoe.ref!
+        
+        // mutate
+        self.cards.values
+            .forEach { $0.ref?.delete() }
+        
+        tictactoeRef.boards.remove(self.id)
+        self.delete()
     }
 
     
@@ -119,7 +140,7 @@ public final class GameBoard {
         }
     }
     
-    package typealias Callback = @Sendable () async -> Void
+    package typealias Hook = @Sendable () async -> Void
     
     public enum Error: String, Swift.Error {
         case gameBoardIsDeleted
