@@ -45,7 +45,7 @@ public final class TicTacToe {
     
     // MARK: action
     public func createGame() async {
-        print(#file, #line, #function, "start")
+        print("\(#file):\(#line) - \(#function) start")
         
         // capture
         await callback?()

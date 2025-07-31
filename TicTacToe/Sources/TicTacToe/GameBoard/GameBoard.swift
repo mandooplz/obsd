@@ -21,7 +21,7 @@ public final class GameBoard {
     }
     
     // MARK: state
-    nonisolated let id = ID()
+    public nonisolated let id = ID()
     nonisolated let tictactoe: TicTacToe.ID
     public nonisolated let createdAt: Date = .now
 
@@ -68,6 +68,9 @@ public final class GameBoard {
     
     // MARK: action
     public func setUp() async {
+        print("\(#file):\(#line) - \(#function) start")
+        
+        
         // capture
         await hook?()
         guard id.isExist else {
@@ -90,6 +93,8 @@ public final class GameBoard {
     }
     
     public func removeBoard() async {
+        print("\(#file):\(#line) - \(#function) start")
+        
         // capture
         await hook?()
         guard id.isExist else {
@@ -122,7 +127,7 @@ public final class GameBoard {
         }
     }
     
-    public enum Player: Sendable, Hashable {
+    public enum Player: String, Sendable, Hashable {
         case X, O
     }
     

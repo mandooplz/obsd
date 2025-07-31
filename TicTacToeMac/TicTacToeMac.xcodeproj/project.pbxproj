@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CE7AE5802E3AF0A70083ED6B /* TicTacToe in Frameworks */ = {isa = PBXBuildFile; productRef = CE7AE57F2E3AF0A70083ED6B /* TicTacToe */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		CE568A802E3A810300CC08B0 /* TicTacToeMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToeMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7AE5802E3AF0A70083ED6B /* TicTacToe in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = TicTacToeMac;
 			packageProductDependencies = (
+				CE7AE57F2E3AF0A70083ED6B /* TicTacToe */,
 			);
 			productName = TicTacToeMac;
 			productReference = CE568A802E3A810300CC08B0 /* TicTacToeMac.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = CE568A772E3A810300CC08B0;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CE7AE57E2E3AF0A70083ED6B /* XCLocalSwiftPackageReference "../TicTacToe" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CE568A812E3A810300CC08B0 /* Products */;
 			projectDirPath = "";
@@ -331,6 +340,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		CE7AE57E2E3AF0A70083ED6B /* XCLocalSwiftPackageReference "../TicTacToe" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../TicTacToe;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE7AE57F2E3AF0A70083ED6B /* TicTacToe */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TicTacToe;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE568A782E3A810300CC08B0 /* Project object */;
 }

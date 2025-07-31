@@ -47,6 +47,8 @@ public final class GameCard {
     
     // MARK: action
     public func select() async {
+        print("\(#file):\(#line) - \(#function) start")
+        
         // capture
         await callback?()
         guard id.isExist else {
