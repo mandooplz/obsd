@@ -5,7 +5,7 @@ import { add, subtract } from '../core/TicTacToe';
 
 
 // MARK: Tests
-describe('Core Example Functions', () => {
+describe('간단한 예시 테스트입니다.', () => {
   it('add function should return the sum of two numbers', () => {
     expect(add(1, 2)).toBe(3);
     expect(add(-1, 1)).toBe(0);
