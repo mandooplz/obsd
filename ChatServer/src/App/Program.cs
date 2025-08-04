@@ -1,23 +1,32 @@
-using App;
-using Core;
 using Microsoft.AspNetCore.SignalR;
-
+using App;
+using App.Hubs;
 
 // app 생성
 var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR();
-builder.Services.AddSingleton<ChatRoomManager>();
 
 var app = builder.Build();
 
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
 
-// HTTP 라우팅
-app.MapGet("/", () => "Hello World!");
+app.UseRouting();
+app.MapStaticAssets();
 
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}")
+    .WithStaticAssets();
 
-// signalR 라우팅
-app.MapHub<ChatHub>("/chathub");
+app.MapHub<ChatHub>("/chatHub");
 
-
-// 시작
 app.Run();
