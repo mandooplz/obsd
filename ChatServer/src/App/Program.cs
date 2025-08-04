@@ -21,6 +21,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseRouting();
 app.MapStaticAssets();
+app.MapControllers();
 
 app.MapControllerRoute(
     name: "default",

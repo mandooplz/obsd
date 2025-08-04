@@ -1,12 +1,14 @@
 "use strict";
 
-// 연결 구성
-var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+// SignalR 연결
+var connection = new signalR.HubConnectionBuilder()
+    .withUrl("/chatHub")
+    .build();
 
 //Disable the send button until connection is established.
 document.getElementById("sendButton").disabled = true;
 
-// 연결 구성
+// ReceiveMessage 메서드 등록
 connection.on("ReceiveMessage", function (user, message) {
     var li = document.createElement("li");
     document.getElementById("messagesList").appendChild(li);
@@ -22,6 +24,10 @@ connection.start().then(function () {
     return console.error(err.toString());
 });
 
+connection.onclose(async () => {
+   console.log("SignalR.Hub connection이 종료됩니다."); 
+});
+
 document.getElementById("sendButton").addEventListener("click", function (event) {
     var user = document.getElementById("userInput").value;
     var message = document.getElementById("messageInput").value;
@@ -31,4 +37,18 @@ document.getElementById("sendButton").addEventListener("click", function (event)
         return console.error(err.toString());
     });
     event.preventDefault();
+});
+
+document.getElementById("subscribeButton").addEventListener("click", async () => {
+    // groupName을 가져온다. 
+    const groupName = document.getElementById("groupNameInput").value;
+    if (groupName) {
+        try {
+            // 4. 서버의 Hub 메서드 호출 (구독 요청)
+            await connection.invoke("SubscribeToGroup", groupName);
+            console.log(`'${groupName}' 그룹 구독 요청을 보냈습니다.`);
+        } catch (err) {
+            console.error(err);
+        }
+    }
 });
