@@ -1,10 +1,43 @@
-namespace App;
 using Microsoft.AspNetCore.SignalR;
+using System;
+using System.Threading.Tasks;
+using Core;
 
-public class ChatHub: Hub
+namespace App
 {
-    public async Task SendMessage(string message)
+    public class ChatHub : Hub
     {
-        await Clients.All.SendAsync("ReceiveMessage", message);
+        private readonly ChatRoomManager _chatRoomManager;
+
+        public ChatHub(ChatRoomManager chatRoomManager)
+        {
+            _chatRoomManager = chatRoomManager;
+        }
+
+        public async Task CreateRoom(string roomName)
+        {
+            _chatRoomManager.CreateRoom(roomName);
+            await Groups.AddToGroupAsync(Context.ConnectionId, roomName);
+            await Clients.Group(roomName).SendAsync("ReceiveMessage", $"{Context.ConnectionId} has created and joined room {roomName}.");
+        }
+
+        public async Task JoinRoom(string roomName)
+        {
+            _chatRoomManager.JoinRoom(roomName, Context.ConnectionId);
+            await Groups.AddToGroupAsync(Context.ConnectionId, roomName);
+            await Clients.Group(roomName).SendAsync("ReceiveMessage", $"{Context.ConnectionId} has joined room {roomName}.");
+        }
+
+        public async Task LeaveRoom(string roomName)
+        {
+            _chatRoomManager.LeaveRoom(roomName, Context.ConnectionId);
+            await Groups.RemoveFromGroupAsync(Context.ConnectionId, roomName);
+            await Clients.Group(roomName).SendAsync("ReceiveMessage", $"{Context.ConnectionId} has left room {roomName}.");
+        }
+
+        public async Task SendMessageToRoom(string roomName, string message)
+        {
+            await Clients.Group(roomName).SendAsync("ReceiveMessage", message);
+        }
     }
 }

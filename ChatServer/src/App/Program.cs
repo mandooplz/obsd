@@ -1,10 +1,12 @@
 using App;
+using Core;
 using Microsoft.AspNetCore.SignalR;
 
 
 // app 생성
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSignalR();
+builder.Services.AddSingleton<ChatRoomManager>();
 
 var app = builder.Build();
 
