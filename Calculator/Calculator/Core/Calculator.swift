@@ -23,6 +23,7 @@ final class Calculator: Sendable {
     nonisolated let id = ID()
     
     var nums: [NumCard.Target: NumCard.ID] = [:]
+    var operators: [OperatorCard.Target: OperatorCard.ID] = [:]
     
     var result: Int?
     
