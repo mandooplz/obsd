@@ -4,9 +4,10 @@
 //
 //  Created by 김민우 on 8/5/25.
 //
-
 import SwiftUI
 
+
+// MARK: View
 struct ContentView: View {
   @State private var formulaString = ""
   @State private var resultString = "0"
