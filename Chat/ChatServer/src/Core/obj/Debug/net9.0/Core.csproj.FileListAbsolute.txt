@@ -11,3 +11,16 @@
 /Users/minwoo/Desktop/OBSD/ChatServer/src/Core/obj/Debug/net9.0/refint/Core.dll
 /Users/minwoo/Desktop/OBSD/ChatServer/src/Core/obj/Debug/net9.0/Core.pdb
 /Users/minwoo/Desktop/OBSD/ChatServer/src/Core/obj/Debug/net9.0/ref/Core.dll
+C:\Users\kmw45\minwoo\obsd\Chat\ChatServer\src\Core\bin\Debug\net9.0\Core.deps.json
+C:\Users\kmw45\minwoo\obsd\Chat\ChatServer\src\Core\bin\Debug\net9.0\Core.dll
+C:\Users\kmw45\minwoo\obsd\Chat\ChatServer\src\Core\bin\Debug\net9.0\Core.pdb
+C:\Users\kmw45\minwoo\obsd\Chat\ChatServer\src\Core\obj\Debug\net9.0\Core.csproj.AssemblyReference.cache
+C:\Users\kmw45\minwoo\obsd\Chat\ChatServer\src\Core\obj\Debug\net9.0\Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kmw45\minwoo\obsd\Chat\ChatServer\src\Core\obj\Debug\net9.0\Core.AssemblyInfoInputs.cache
+C:\Users\kmw45\minwoo\obsd\Chat\ChatServer\src\Core\obj\Debug\net9.0\Core.AssemblyInfo.cs
+C:\Users\kmw45\minwoo\obsd\Chat\ChatServer\src\Core\obj\Debug\net9.0\Core.csproj.CoreCompileInputs.cache
+C:\Users\kmw45\minwoo\obsd\Chat\ChatServer\src\Core\obj\Debug\net9.0\Core.sourcelink.json
+C:\Users\kmw45\minwoo\obsd\Chat\ChatServer\src\Core\obj\Debug\net9.0\Core.dll
+C:\Users\kmw45\minwoo\obsd\Chat\ChatServer\src\Core\obj\Debug\net9.0\refint\Core.dll
+C:\Users\kmw45\minwoo\obsd\Chat\ChatServer\src\Core\obj\Debug\net9.0\Core.pdb
+C:\Users\kmw45\minwoo\obsd\Chat\ChatServer\src\Core\obj\Debug\net9.0\ref\Core.dll
