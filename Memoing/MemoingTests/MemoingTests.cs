@@ -20,6 +20,6 @@ public class MemoingTests
         memoingRef.CreateNewMemo();
 
         // then
-        Assert.Equal(memoingRef.Memos.Count, 1);
+        Assert.Single(memoingRef.Memos);
     }
 }
