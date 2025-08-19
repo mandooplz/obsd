@@ -1,0 +1,12 @@
+C:\Users\kmw45\minwoo\obsd\Memoing\MemoingCore\bin\Debug\net10.0\MemoingCore.deps.json
+C:\Users\kmw45\minwoo\obsd\Memoing\MemoingCore\bin\Debug\net10.0\MemoingCore.dll
+C:\Users\kmw45\minwoo\obsd\Memoing\MemoingCore\bin\Debug\net10.0\MemoingCore.pdb
+C:\Users\kmw45\minwoo\obsd\Memoing\MemoingCore\obj\Debug\net10.0\MemoingCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kmw45\minwoo\obsd\Memoing\MemoingCore\obj\Debug\net10.0\MemoingCore.AssemblyInfoInputs.cache
+C:\Users\kmw45\minwoo\obsd\Memoing\MemoingCore\obj\Debug\net10.0\MemoingCore.AssemblyInfo.cs
+C:\Users\kmw45\minwoo\obsd\Memoing\MemoingCore\obj\Debug\net10.0\MemoingCore.csproj.CoreCompileInputs.cache
+C:\Users\kmw45\minwoo\obsd\Memoing\MemoingCore\obj\Debug\net10.0\MemoingCore.sourcelink.json
+C:\Users\kmw45\minwoo\obsd\Memoing\MemoingCore\obj\Debug\net10.0\MemoingCore.dll
+C:\Users\kmw45\minwoo\obsd\Memoing\MemoingCore\obj\Debug\net10.0\refint\MemoingCore.dll
+C:\Users\kmw45\minwoo\obsd\Memoing\MemoingCore\obj\Debug\net10.0\MemoingCore.pdb
+C:\Users\kmw45\minwoo\obsd\Memoing\MemoingCore\obj\Debug\net10.0\ref\MemoingCore.dll
