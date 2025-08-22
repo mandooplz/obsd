@@ -4,6 +4,14 @@ namespace Core;
 public sealed class ChatServer
 {
     // core
+    public ChatServer()
+    {
+        ChatServerManager.Register(this);
+    }
+    public void delete()
+    {
+        ChatServerManager.Unregister(this.Id);
+    }
 
 
     // state
@@ -25,12 +33,12 @@ public sealed class ChatServer
 
         public bool IsExist
         {
-            get { return ChatServerManager.Container[this] != null; }
+            get { return ChatServerManager.Get(this) != null; }
         }
 
         public ChatServer? Ref
         {
-            get { return ChatServerManager.Container[this]; }
+            get { return ChatServerManager.Get(this); }
         }
     }
 
@@ -51,7 +59,13 @@ internal sealed class ChatServerManager
     }
     internal static ChatServer? Get(ChatServer.ID objectId)
     {
-        return Container[objectId];
-    
+        if (Container.ContainsKey(objectId))
+        {
+            return Container[objectId];
+        } 
+        else
+        {
+            return null;
+        }
     }
 }
