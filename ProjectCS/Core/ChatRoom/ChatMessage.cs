@@ -1,5 +1,6 @@
 namespace Core;
 
+
 // Object 
 public sealed class ChatMessage
 {

@@ -1,6 +1,5 @@
 namespace Core;
 
-
 // Object
 public sealed class ChatServer
 {
@@ -34,6 +33,7 @@ public sealed class ChatServer
             get { return ChatServerManager.Container[this]; }
         }
     }
+
 }
 
 
