@@ -1,5 +1,7 @@
 namespace Core;
 
+using System.Collections.Concurrent;
+
 // Object
 public sealed class ChatServer
 {
@@ -48,24 +50,17 @@ public sealed class ChatServer
 // ObjectManager
 internal sealed class ChatServerManager
 {
-    internal static Dictionary<ChatServer.ID, ChatServer> Container = new();
+    internal static ConcurrentDictionary<ChatServer.ID, ChatServer> Container = new();
     internal static void Register(ChatServer obj)
     {
-        Container.Add(obj.Id, obj);
+        Container.TryAdd(obj.Id, obj);
     }
     internal static void Unregister(ChatServer.ID objectId)
     {
-        Container.Remove(objectId);
+        Container.TryRemove(objectId, out _);
     }
     internal static ChatServer? Get(ChatServer.ID objectId)
     {
-        if (Container.ContainsKey(objectId))
-        {
-            return Container[objectId];
-        } 
-        else
-        {
-            return null;
-        }
+        return Container.GetValueOrDefault(objectId);
     }
 }
