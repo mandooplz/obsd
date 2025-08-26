@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using Values.IDs;
 
 namespace Core;
@@ -7,8 +8,9 @@ namespace Core;
 public sealed class ChatMessage
 {
     // core
-    public ChatMessage(string body)
+    public ChatMessage(ChatServer owner, string body)
     {
+        this.Owner = owner;
         this.Body = body;
 
         ChatMessageManager.Register(this);
@@ -21,6 +23,7 @@ public sealed class ChatMessage
 
     // state
     public ID Id { get; } = ID.Random();
+    public ChatServer? Owner { get; } = null;
     public MessageID Target { get; } = MessageID.Random();
 
     public string Body { get; }
@@ -30,9 +33,16 @@ public sealed class ChatMessage
     // action
     public void Remove()     
     {
+        // capture
+        Debug.Assert(Owner is not null);
+        var message = this.Target;
+
+
         // mutate
         this.delete();
+        Owner.RemoveMessage(message);
     }
+
 
     // value
     public readonly record struct ID

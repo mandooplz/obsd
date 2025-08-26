@@ -1,8 +1,8 @@
+namespace Core;
+
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using Values.IDs;
-
-namespace Core;
 
 
 // Object
@@ -30,6 +30,17 @@ public sealed class ChatServer
     }
 
     public ConcurrentDictionary<MessageID, ChatMessage.ID> Messages { get; private set; } = [];
+    public ChatMessage.ID? GetMessage(MessageID message)
+    {
+        if (Messages.TryGetValue(message, out var value))
+            return value;
+        else
+            return null;
+    }
+    public void RemoveMessage(MessageID message)
+    {
+        Messages.TryRemove(message, out _);
+    }
 
     // action
     public void InitMessages()
@@ -40,7 +51,7 @@ public sealed class ChatServer
             Debug.Assert(newBody is not null);
 
             // 货肺款 皋矫瘤 积己
-            var chatMessageRef = new ChatMessage(newBody);
+            var chatMessageRef = new ChatMessage(this, newBody);
             this.Messages.TryAdd(chatMessageRef.Target, chatMessageRef.Id);
         }
     }

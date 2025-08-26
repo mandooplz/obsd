@@ -1,4 +1,4 @@
-﻿namespace CoreTests.ChatServer; 
+﻿namespace ChatServer; 
 
 using Core;
 using Values.IDs;
