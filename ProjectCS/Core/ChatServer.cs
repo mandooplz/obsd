@@ -48,7 +48,7 @@ public sealed class ChatServer
 
 
 // ObjectManager
-internal sealed class ChatServerManager
+internal static class ChatServerManager
 {
     internal static ConcurrentDictionary<ChatServer.ID, ChatServer> Container = new();
     internal static void Register(ChatServer obj)
