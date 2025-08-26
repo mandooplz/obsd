@@ -5,7 +5,6 @@ using Xunit;
 
 
 // Tests
-
 public class Init
 {
     
@@ -25,7 +24,6 @@ public class Init
         Assert.True(isExist);
     }
 }
-
 
 public class Delete
 {

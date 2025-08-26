@@ -1,6 +1,6 @@
+using System.Collections.Concurrent;
 namespace Core;
 
-using System.Collections.Concurrent;
 
 // Object
 public sealed class ChatServer
