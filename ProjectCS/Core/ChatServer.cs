@@ -1,4 +1,7 @@
 using System.Collections.Concurrent;
+using System.Diagnostics;
+using Values.IDs;
+
 namespace Core;
 
 
@@ -17,33 +20,45 @@ public sealed class ChatServer
 
 
     // state
-    public readonly ID Id = new();
+    public ID Id { get; } = ID.Random();
+    public ServerID target { get; } = ServerID.Random();
 
+    public ConcurrentQueue<string> TextQueue { get; private set; } = [];
+    public void AddMessage(string message)
+    {
+        TextQueue.Enqueue(message);
+    }
+
+    public ConcurrentDictionary<MessageID, ChatMessage.ID> Messages { get; private set; } = [];
 
     // action
-
-
-    // value
-    public struct ID
+    public void InitMessages()
     {
-        public readonly Guid value;
-
-        public ID()
+        // mutate
+        while (TextQueue.TryDequeue(out var newBody))
         {
-            this.value = Guid.NewGuid();
-        }
+            Debug.Assert(newBody is not null);
 
-        public bool IsExist
-        {
-            get { return ChatServerManager.Get(this) != null; }
-        }
-
-        public ChatServer? Ref
-        {
-            get { return ChatServerManager.Get(this); }
+            // 货肺款 皋矫瘤 积己
+            var chatMessageRef = new ChatMessage(newBody);
+            this.Messages.TryAdd(chatMessageRef.Target, chatMessageRef.Id);
         }
     }
 
+
+
+
+    // value
+    public readonly record struct ID
+    {
+        // core
+        public required Guid Value { get; init; }
+        public static ID Random() => new ID { Value = Guid.NewGuid() };
+
+        // operators
+        public bool IsExist => ChatServerManager.Get(this) != null;
+        public ChatServer? Ref => ChatServerManager.Get(this);
+    }
 }
 
 
