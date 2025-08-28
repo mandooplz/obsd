@@ -41,6 +41,18 @@ public sealed class ChatServer
     {
         Messages.TryRemove(message, out _);
     }
+    public List<ChatMessage.Data> GetMessageDatas()
+    {
+        return Messages
+            .Values
+            .Select(msgId => msgId.Ref())                     // ChatMessage.ID → ChatMessage?
+            .OfType<ChatMessage>()                            // null 제거
+            .OrderBy(msg => msg.CreatedAt)                    // CreatedAt 기준 정렬
+            .Select(msg => new ChatMessage.Data { Body = msg.Body }) // Data 변환
+            .ToList();
+    }
+
+
 
     // action
     public void InitMessages()

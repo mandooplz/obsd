@@ -26,8 +26,8 @@ public sealed class ChatMessage
     public ChatServer? Owner { get; } = null;
     public MessageID Target { get; } = MessageID.Random();
 
+    public DateTime CreatedAt { get; } = DateTime.UtcNow;
     public string Body { get; }
-
 
 
     // action
@@ -54,6 +54,11 @@ public sealed class ChatMessage
         // operator
         public bool IsExist() => ChatMessageManager.Get(this) != null;
         public ChatMessage? Ref() => ChatMessageManager.Get(this);
+    }
+    public readonly record struct Data
+    {
+        // core
+        public required string Body { get; init; }
     }
 }
 
