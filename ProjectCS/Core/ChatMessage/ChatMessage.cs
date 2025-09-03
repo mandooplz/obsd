@@ -64,18 +64,18 @@ public sealed class ChatMessage
 
 
 // ObjectManager
-internal static class ChatMessageManager
+file static class ChatMessageManager
 {
-    internal static ConcurrentDictionary<ChatMessage.ID, ChatMessage> Container = new();
-    internal static void Register(ChatMessage obj)
+    file static ConcurrentDictionary<ChatMessage.ID, ChatMessage> Container = new();
+    file static void Register(ChatMessage obj)
     {
         Container.TryAdd(obj.Id, obj);
     }
-    internal static void Unregister(ChatMessage.ID objectId)
+    file static void Unregister(ChatMessage.ID objectId)
     {
         Container.TryRemove(objectId, out _);
     }
-    internal static ChatMessage? Get(ChatMessage.ID objectId)
+    file static ChatMessage? Get(ChatMessage.ID objectId)
     {
         return Container.GetValueOrDefault(objectId);
     }
